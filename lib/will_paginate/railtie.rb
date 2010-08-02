@@ -10,6 +10,13 @@ module WillPaginate
       end
     end
     
+    initializer "will_paginate.data_mapper" do |app|
+      if defined? ::DataMapper
+        require 'will_paginate/finders/data_mapper'
+        # WillPaginate::Finders::ActiveRecord.enable!
+      end
+    end
+    
     initializer "will_paginate.action_dispatch" do |app|
       if defined? ::ActionDispatch::ShowExceptions
         ActionDispatch::ShowExceptions.rescue_responses['WillPaginate::InvalidPage'] = :not_found
