@@ -27,4 +27,4 @@ module WillPaginate::Finders
   end
 end
 
-DataMapper::Model.send(:include, WillPaginate::Finders::DataMapper)
+DataMapper::Model.append_extensions(WillPaginate::Finders::DataMapper)
